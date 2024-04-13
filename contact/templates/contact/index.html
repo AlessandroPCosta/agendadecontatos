@@ -6,12 +6,13 @@
             <caption class="table-caption">
                 Contatos
             </caption>
+
                 <thead>
                     <tr class="table-row table-row-header">
                         <th class="table-header">ID</th>
                         <th class="table-header">Nome</th>
                         <th class="table-header">Sobrenome</th>
-                        <th class="table-header">Phone</th>
+                        <th class="table-header">Telefone</th>
                         <th class="table-header">E-mail</th>
                     </tr>
                 </thead>
@@ -20,7 +21,10 @@
                     {% for contact in contacts %} 
                         <tr class="table-row">
                             <td class="table-cel">
-                                <a class="table-link" href="#">
+                                <a 
+                                    class="table-link"
+                                    href="{% url 'contact:contato' contact.id %}"
+                                >
                                     {{ contact.id}}
                                 </a>
                             </td>
@@ -36,16 +40,9 @@
                             <td class="table-cel">
                                 {{ contact.email}}
                             </td>
-                            <td class="table-cel">
-
-                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
         </table>
     </div>
-    {% for contact in contacts %}
-        {{ contact.nome }} <br>
-    
-    {% endfor %}
 {% endblock content %}
