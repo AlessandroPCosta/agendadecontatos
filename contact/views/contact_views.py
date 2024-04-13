@@ -10,12 +10,14 @@ def index(request):
     
     context = {
         'contacts' : contacts,
+        'site_title' : 'Contatos - '
     }
     return render(
         request,
         'contact/index.html',
         context,
     )
+
 def contato(request, contato_id):
 
     #single_contact = Contact.objects.filter(pk=contato_id).first()
@@ -25,9 +27,12 @@ def contato(request, contato_id):
 
    # if single_contact is None:
     #    raise Http404()
-        
+
+    contact_name = f'{single_contact.nome} {single_contact.sobrenome} '
+
     context = {
         'contact' : single_contact,
+        'site_title' : contact_name
     }
     return render(
         request,
