@@ -4,21 +4,18 @@ from . import models
 
 class ContactForm(forms.ModelForm):
     #Possibilidade de criar ou modificar o campo do formulario.
-    nome = forms.CharField(
-        widget=forms.TimeInput(
+    imagem = forms.ImageField(
+        widget=forms.FileInput(
             attrs={
-                'class': 'classe-a',
-                'placeholder': 'Digite aqui',
+            'accept':'image/*',
             }
-        ),
-        label='Primeito Nome',
-        help_text='Texto de ajuda'
+        )
     )
 
     class Meta:
         model = models.Contact
         fields = (
-            'nome', 'sobrenome', 'phone', 'email', 'descricao', 'categoria',
+            'nome', 'sobrenome', 'phone', 'email', 'descricao', 'categoria', 'imagem',
         )
 
     def clean(self):
